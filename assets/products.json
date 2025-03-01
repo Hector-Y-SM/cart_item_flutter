@@ -1,0 +1,60 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "nombre": "Samsung Galaxy S23 Ultra",
+      "costo": 28999.00,
+      "descripcion": "Smartphone con pantalla AMOLED de 6.8 pulgadas, Snapdragon 8 Gen 2, cámara de 200 MP y S-Pen.",
+      "foto": "assets/img/s23.png"
+    },
+    {
+      "id": 2,
+      "nombre": "iPhone 15 Pro Max",
+      "costo": 32999.00,
+      "descripcion": "iPhone con chip A17 Pro, pantalla Super Retina XDR de 6.7 pulgadas y cámara con zoom óptico 5x.",
+      "foto": "assets/img/i15pm.png"
+    },
+    {
+      "id": 3,
+      "nombre": "Google Pixel 8 Pro",
+      "costo": 25999.00,
+      "descripcion": "Celular con Android puro, procesador Tensor G3 y cámara con inteligencia artificial avanzada.",
+      "foto": "assets/img/gp8.png"
+    },
+    {
+      "id": 4,
+      "nombre": "Xiaomi 13 Ultra",
+      "costo": 21999.00,
+      "descripcion": "Smartphone con pantalla OLED, Snapdragon 8 Gen 2 y cámaras Leica de nivel profesional.",
+      "foto": "assets/img/x13u.png"
+    },
+    {
+      "id": 5,
+      "nombre": "OnePlus 11",
+      "costo": 18999.00,
+      "descripcion": "Celular con pantalla de 120Hz, Snapdragon 8 Gen 2 y carga rápida de 100W.",
+      "foto": "assets/img/op11.png"
+    },
+    {
+      "id": 6,
+      "nombre": "Motorola Edge 40 Pro",
+      "costo": 17999.00,
+      "descripcion": "Smartphone con pantalla OLED de 165Hz, Snapdragon 8 Gen 2 y cámara de 50 MP con OIS.",
+      "foto": "assets/img/me40p.png"
+    },
+    {
+      "id": 7,
+      "nombre": "Realme GT 3",
+      "costo": 16999.00,
+      "descripcion": "Celular con Snapdragon 8+ Gen 1, pantalla AMOLED de 144Hz y carga rápida de 240W.",
+      "foto": "assets/img/rgt3.png"
+    },
+    {
+      "id": 8,
+      "nombre": "Nothing Phone (2)",
+      "costo": 19999.00,
+      "descripcion": "Smartphone con diseño transparente, Snapdragon 8+ Gen 1 y pantalla OLED de 120Hz.",
+      "foto": "assets/img/np2.png"
+    }
+  ]
+}
