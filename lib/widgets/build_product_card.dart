@@ -1,7 +1,8 @@
+import 'package:app/data/models/product.dart';
 import 'package:flutter/material.dart';
 
 class BuildProductCard extends StatelessWidget {
-  final List<Map<String, dynamic>> items;
+  final Future<List<Product>> items;
   final double height;
 
   const BuildProductCard({
@@ -12,23 +13,38 @@ class BuildProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: height,
-      padding: const EdgeInsets.all(8),
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: items.length,
-        itemBuilder: (context, index) => _buildProductCard(context, items[index]),
-      ),
+    return FutureBuilder<List<Product>>(
+      future: items,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else if (snapshot.hasError) {
+          return const Center(child: Text('Error al cargar productos'));
+        } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+          return const Center(child: Text('No hay productos disponibles'));
+        }
+
+        final productList = snapshot.data!; // Lista de productos ya cargada
+
+        return Container(
+          height: height,
+          padding: const EdgeInsets.all(8),
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: productList.length,
+            itemBuilder: (context, index) => _buildProductCard(context, productList[index]),
+          ),
+        );
+      },
     );
   }
 
-  Widget _buildProductCard(BuildContext context, Map<String, dynamic> item) {
+  Widget _buildProductCard(BuildContext context, Product product) {
     return GestureDetector(
       onTap: () => Navigator.pushNamed(
         context,
         '/product/detail',
-        arguments: item['id'], // Asegúrate que tu JSON tenga este campo
+        arguments: product.id,
       ),
       child: Container(
         width: 160,
@@ -58,7 +74,7 @@ class BuildProductCard extends StatelessWidget {
                   topRight: Radius.circular(15),
                 ),
                 child: Image.asset(
-                  item['foto'],
+                  product.foto,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -69,7 +85,7 @@ class BuildProductCard extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    item['nombre'],
+                    product.nombre,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
@@ -79,7 +95,7 @@ class BuildProductCard extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    '\$${item['costo']}',
+                    '\$${product.costo}',
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 14,
